@@ -256,25 +256,25 @@ body {
     white-space: nowrap !important;
   }
 
+  /* ── OUR EDGE ── */
+  .m-edge-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
   /* ── TESTIMONIALS ── */
   .m-testi-grid {
     grid-template-columns: 1fr !important;
     gap: 1rem !important;
   }
 
-  /* ── PROCESS ── */
-  .m-process-grid {
+  /* ── WEEK ONE TIMELINE ── */
+  .m-timeline-grid {
     grid-template-columns: 1fr !important;
-    gap: 0 !important;
+    gap: 1rem !important;
   }
-  .m-process-grid > div {
-    padding: 1.5rem 0 !important;
-    border-top: 1px solid var(--g200) !important;
-    border-bottom: none !important;
-  }
-  .m-process-grid > div:first-child {
-    padding-top: 0 !important;
-    border-top: none !important;
+  .m-timeline-line {
+    display: none !important;
   }
 
   /* ── CTA ── */

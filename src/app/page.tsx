@@ -438,82 +438,173 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 9. HOW IT WORKS ── */}
+      {/* ── 9. WEEK ONE ── */}
       <section className="m-section" style={{
         padding: "4.5rem 4rem",
         background: "var(--white)",
         borderTop: "0.5px solid var(--g200)",
       }}>
         <div style={{ maxWidth: 960, margin: "0 auto" }}>
-          <p className="section-label">How it works</p>
+          <p className="section-label">Week one</p>
           <h2 style={{
             fontFamily: fd,
             fontSize: "clamp(2rem, 4vw, 3rem)",
             fontWeight: 800,
+            lineHeight: 1.15,
             textTransform: "uppercase",
             marginBottom: "2rem",
             color: "var(--black)",
           }}>
-            Three phases. One goal: your revenue.
+            From signed contract to first winning ad in{" "}
+            <span style={{ color: "var(--red)" }}>14 days</span> or less.
           </h2>
-          <div className="m-process-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2rem" }}>
+
+          <div className="m-timeline-grid" style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "1.25rem",
+            position: "relative",
+          }}>
+            {/* Dashed line connecting cards */}
+            <div className="m-timeline-line" style={{
+              position: "absolute",
+              top: "50%",
+              left: "10%",
+              right: "10%",
+              height: 1,
+              background: "repeating-linear-gradient(to right, var(--g200) 0, var(--g200) 6px, transparent 6px, transparent 12px)",
+              zIndex: 0,
+            }} />
+
             {[
-              {
-                phase: "Phase 01",
-                title: "Diagnose",
-                desc: "We look at your real account, your offer, and your sales process. Most of the issues are visible in the first 48 hours.",
-                items: ["Sales strategy", "Follow-up & automation", "Response time", "Offer strength", "Sales conversation"],
-              },
-              {
-                phase: "Phase 02",
-                title: "Launch",
-                desc: "We build the campaigns, segment the audiences, and get the baseline right from day one — no more months of 'testing'.",
-                items: ["Campaign creation (Meta / Google / TikTok)", "Segmentation study", "Segmentation testing", "Ad account optimization", "Creative optimization"],
-              },
-              {
-                phase: "Phase 03",
-                title: "Scale",
-                desc: "Once your revenue engine is working, we push. Budget, creative, audience — optimized in continuous cycles.",
-                items: ["Campaign optimization", "Segmentation refinement", "Budget reallocation", "Creative iteration", "Sales process evaluation"],
-              },
+              { label: "Day 1–3", desc: "Onboarding call, account audit, competitor teardown." },
+              { label: "Day 4–7", desc: "Tracking rebuilt, creative library produced, test campaigns live." },
+              { label: "Day 8–14", desc: "First winning creative identified and ready to scale." },
             ].map((step, i) => (
               <div key={i} style={{
-                paddingTop: "0.75rem",
-                borderTop: "2px solid var(--g200)",
+                border: "0.5px solid var(--g200)",
+                borderRadius: 8,
+                padding: "1.5rem 1.25rem",
+                background: "var(--white)",
                 position: "relative",
+                zIndex: 1,
+                transition: "transform 0.3s ease, box-shadow 0.3s ease",
               }}>
                 <div style={{
-                  position: "absolute",
-                  top: -2,
-                  left: 0,
-                  width: 40,
-                  height: 2,
-                  background: "var(--red)",
-                }} />
-                <div style={{ fontFamily: fd, fontSize: "0.68rem", fontWeight: 800, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--red)", marginBottom: "0.5rem" }}>
-                  {step.phase}
+                  fontFamily: fd,
+                  fontSize: "0.72rem",
+                  fontWeight: 800,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  color: "var(--red)",
+                  marginBottom: "0.65rem",
+                }}>
+                  {step.label}
                 </div>
-                <div style={{ fontFamily: fd, fontSize: "1.25rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.02em", marginBottom: "0.5rem", color: "var(--black)" }}>
-                  {step.title}
-                </div>
-                <p style={{ fontSize: "0.82rem", fontWeight: 300, lineHeight: 1.6, color: "var(--g600)", marginBottom: "0.5rem" }}>
+                <p style={{ fontSize: "0.92rem", fontWeight: 400, color: "var(--black)", lineHeight: 1.5 }}>
                   {step.desc}
                 </p>
-                <div style={{ display: "flex", flexDirection: "column", gap: "0.2rem" }}>
-                  {step.items.map((item, j) => (
-                    <div key={j} style={{ fontSize: "0.75rem", color: "var(--g400)", display: "flex", alignItems: "flex-start", gap: 6, fontWeight: 300 }}>
-                      <span style={{ color: "var(--red)", flexShrink: 0, fontSize: "0.65rem", marginTop: 2 }}>—</span>
-                      {item}
-                    </div>
-                  ))}
-                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── 9. CTA ── */}
+      {/* ── 10. OUR EDGE ── */}
+      <section className="m-section" style={{
+        padding: "4.5rem 4rem",
+        background: "var(--off)",
+        borderTop: "0.5px solid var(--g200)",
+      }}>
+        <div style={{ maxWidth: 960, margin: "0 auto" }}>
+          <p className="section-label">Our edge</p>
+          <h2 style={{
+            fontFamily: fd,
+            fontSize: "clamp(2rem, 4vw, 3rem)",
+            fontWeight: 800,
+            lineHeight: 1.15,
+            textTransform: "uppercase",
+            marginBottom: "1rem",
+            color: "var(--black)",
+          }}>
+            We don&apos;t start from zero.{" "}
+            <span style={{ color: "var(--red)" }}>We start from what&apos;s already working.</span>
+          </h2>
+
+          <p style={{
+            fontSize: "0.95rem",
+            fontWeight: 300,
+            lineHeight: 1.7,
+            color: "var(--g600)",
+            maxWidth: 680,
+            marginBottom: "2rem",
+          }}>
+            Before we spend a single dollar of your budget, our AI agents reverse-engineer the ads, angles, and funnels already winning in your category.
+          </p>
+
+          <div className="m-edge-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.25rem" }}>
+            {[
+              {
+                title: "Winning ads, mapped.",
+                desc: "Every top-performing ad in your niche from the last 90 days. We know what\u2019s converting before we write a single line of copy.",
+              },
+              {
+                title: "Angles, decoded.",
+                desc: "AI clusters the messaging patterns your competitors are using and surfaces the angles you\u2019re missing.",
+              },
+              {
+                title: "Funnels, audited.",
+                desc: "We map your top competitors\u2019 landing pages and find their leaks before we build yours.",
+              },
+            ].map((card, i) => (
+              <div key={i} style={{
+                border: "0.5px solid var(--g200)",
+                borderRadius: 8,
+                padding: "1.5rem 1.25rem",
+                background: "var(--white)",
+              }}>
+                <div style={{
+                  fontFamily: fd,
+                  fontSize: "1.1rem",
+                  fontWeight: 800,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.02em",
+                  marginBottom: "0.5rem",
+                  color: "var(--black)",
+                }}>
+                  {card.title}
+                </div>
+                <p style={{ fontSize: "0.84rem", fontWeight: 300, color: "var(--g600)", lineHeight: 1.6 }}>
+                  {card.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div style={{
+            marginTop: "2rem",
+            borderLeft: "3px solid var(--red)",
+            paddingLeft: "1.25rem",
+          }}>
+            <p style={{
+              fontFamily: fd,
+              fontSize: "1.15rem",
+              fontWeight: 800,
+              textTransform: "uppercase",
+              color: "var(--black)",
+              lineHeight: 1.3,
+              marginBottom: "0.5rem",
+            }}>
+              Your day-one creatives aren&apos;t a gamble. They&apos;re backed by hundreds of ads that already proved what works.
+            </p>
+            <p style={{ fontSize: "0.84rem", color: "var(--g400)", fontWeight: 400 }}>
+              What takes traditional agencies <span style={{ color: "var(--red)", fontWeight: 600 }}>60 days</span> of testing, we compress into <span style={{ color: "var(--red)", fontWeight: 600 }}>less than 20</span>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 11. CTA ── */}
       <section className="m-cta" style={{
         background: "var(--red)",
         padding: "8rem 4rem",
