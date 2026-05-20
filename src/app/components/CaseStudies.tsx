@@ -7,56 +7,35 @@ const fb = "var(--font-body), sans-serif";
 
 const cases = [
   {
-    tab: "OneTool",
-    industry: "DTC Ecommerce",
-    client: "OneTool",
-    tag: "DTC Ecommerce · Physical Product · LATAM",
+    tab: "Xcore.fit",
+    industry: "B2B SaaS",
+    client: "Xcore.fit",
+    tag: "B2B SaaS · Vertical SaaS · 12 Countries",
     before:
-      "OneTool was doing 25 orders a day with CPA increasing month over month. The founder was managing ads alone with no visibility into what was actually working. Every time they pushed more budget, cost per purchase went up. Creative had gone stale, audiences were burned out, and growth had completely stalled.",
+      "Xcore.fit was operating in 12 countries but almost every new gym signup came from a referral or a flight their sales team took. Growth was real, but completely dependent on human effort. No system in place. If the team stopped moving, the pipeline stopped moving. They needed predictable, paid acquisition that could scale MRR without scaling headcount.",
     badge: null,
-    bigNum: "70+",
-    bigLabel: "Daily orders in 3.5 months — up from 25",
+    bigNum: "8–12",
+    bigLabel: "New customers/month across multiple countries simultaneously",
     metrics: [
-      { val: "50%", key: "CPA reduction" },
-      { val: "3.5 mo", key: "Timeline" },
+      { val: "$5K", key: "Monthly ad spend" },
+      { val: "12", key: "Countries active" },
     ],
     rows: [
-      { k: "Ad spend", v: "$2,500/mo → $5,000/mo" },
-      { k: "Revenue", v: "$4M COP/week → $8-9M COP/week" },
-      { k: "Channel", v: "Meta Ads" },
-      { k: "Industry", v: "DTC Ecommerce — physical product" },
-    ],
-  },
-  {
-    tab: "IDACA",
-    industry: "Medical Imaging",
-    client: "IDACA",
-    tag: "Medical Imaging · 9 Locations · USA",
-    before:
-      "IDACA was generating $809K/month across 9 locations — but had no visibility into which ones were actually driving revenue. Budget was spread evenly across all of them, nothing moved, and growth had been flat for 6 months. They kept paying for reports full of clicks and impressions that didn't tell them anything useful.",
-    badge: null,
-    bigNum: "$1.12M",
-    bigLabel: "Monthly revenue in 90 days — up from $809K",
-    metrics: [
-      { val: "+38%", key: "Revenue growth" },
-      { val: "Day 60", key: "$1M/month milestone" },
-    ],
-    rows: [
-      { k: "Ad spend", v: "$10K → $14K/mo" },
-      { k: "Timeline", v: "90 days" },
-      { k: "Channel", v: "Meta Ads" },
+      { k: "Previous model", v: "Referrals + travel" },
+      { k: "Now", v: "Automated paid acquisition + chatbot qualification" },
+      { k: "Revenue model", v: "Monthly subscription, compounding MRR" },
     ],
   },
   {
     tab: "Tu Proyecto Fitness",
-    industry: "Gym B2B",
+    industry: "B2B High Ticket",
     client: "Tu Proyecto Fitness",
-    tag: "Gym · B2B High Ticket · LATAM",
+    tag: "B2B High Ticket · Pipeline Acquisition · LATAM",
     before:
-      "Tu Proyecto Fitness had a strong high-ticket offer — but their pipeline ran entirely on referrals and word of mouth. Growth was capped by how many conversations their team could have. They'd tried paid ads before, but the leads that came in weren't qualified and ended up wasting their team's time.",
+      "Tu Proyecto Fitness had a strong high-ticket offer but their pipeline ran entirely on referrals and word of mouth. Growth was capped by how many conversations their team could have. They tried paid ads before, but the leads coming in weren't qualified and ended up wasting their team's time. The same pattern most B2B SaaS sales teams run into when they turn on paid for the first time.",
     badge: null,
     bigNum: "38x",
-    bigLabel: "ROAS — $6K spend → $230K revenue",
+    bigLabel: "ROAS. $6K spend, $230K revenue",
     metrics: [
       { val: "$200K+", key: "Single client value" },
       { val: "2 months", key: "Timeline" },
@@ -68,23 +47,43 @@ const cases = [
     ],
   },
   {
-    tab: "Xcore.fit",
-    industry: "Gym SaaS",
-    client: "Xcore.fit",
-    tag: "Gym SaaS · 12 Countries",
+    tab: "IDACA",
+    industry: "Multi-Location Healthcare",
+    client: "IDACA",
+    tag: "Multi-Location Healthcare · 9 Locations · USA",
     before:
-      "Xcore.fit was operating in 12 countries — but almost every new client came from a referral or a flight their sales team took. Growth was real, but completely dependent on human effort. No system in place. If the team stopped moving, the pipeline stopped moving.",
+      "IDACA was generating $809K/month across 9 locations but had no visibility into which ones were actually driving revenue. Budget was spread evenly across all of them, nothing moved, and growth had been flat for 6 months. They kept paying for reports full of clicks and impressions that didn't tell them anything useful. The same trap SaaS teams fall into when attribution breaks and the dashboard stops telling the truth.",
     badge: null,
-    bigNum: "8–12",
-    bigLabel: "New gyms/month — across multiple countries simultaneously",
+    bigNum: "$1.12M",
+    bigLabel: "Monthly revenue in 90 days, up from $809K",
     metrics: [
-      { val: "$5K", key: "Monthly ad spend" },
-      { val: "12", key: "Countries active" },
+      { val: "+38%", key: "Revenue growth" },
+      { val: "Day 60", key: "$1M/month milestone" },
     ],
     rows: [
-      { k: "Previous model", v: "Referrals + travel" },
-      { k: "Now", v: "Automated + chatbot qualification" },
-      { k: "Revenue model", v: "Monthly subscription — compounding MRR" },
+      { k: "Ad spend", v: "$10K to $14K/mo" },
+      { k: "Timeline", v: "90 days" },
+      { k: "Channel", v: "Meta Ads" },
+    ],
+  },
+  {
+    tab: "OneTool",
+    industry: "DTC Ecommerce",
+    client: "OneTool",
+    tag: "DTC Ecommerce · Physical Product · LATAM",
+    before:
+      "OneTool was doing 25 orders a day with CPA increasing month over month. The founder was managing ads alone with no visibility into what was actually working. Every time they pushed more budget, cost per purchase went up. Creative had gone stale, audiences were burned out, and growth had completely stalled. The same compounding problem we solve in SaaS funnels when CAC keeps climbing month over month.",
+    badge: null,
+    bigNum: "70+",
+    bigLabel: "Daily orders in 3.5 months, up from 25",
+    metrics: [
+      { val: "50%", key: "CPA reduction" },
+      { val: "3.5 mo", key: "Timeline" },
+    ],
+    rows: [
+      { k: "Ad spend", v: "$2,500/mo to $5,000/mo" },
+      { k: "Revenue", v: "$4M COP/week to $8-9M COP/week" },
+      { k: "Channel", v: "Meta Ads" },
     ],
   },
 ];
@@ -177,7 +176,7 @@ export default function CaseStudies() {
             textAlign: "right",
             lineHeight: 1.5,
           }}>
-            Results from active clients — not cherry-picked outliers.
+            Results from active clients. Not cherry-picked outliers.
           </p>
         </div>
 

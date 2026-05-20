@@ -22,7 +22,7 @@ export default function Home() {
         <div>
           <img src="/logo-astra.png" alt="Astra Agency" style={{ height: 52, mixBlendMode: "multiply" }} />
         </div>
-        <button className="m-nav-cta" style={{
+        <a href="https://calendly.com/admin-agencyastra/30min" target="_blank" rel="noopener noreferrer" className="m-nav-cta" style={{
           fontFamily: fb,
           fontSize: "0.85rem",
           fontWeight: 500,
@@ -31,9 +31,11 @@ export default function Home() {
           color: "var(--white)",
           border: "none",
           borderRadius: 5,
+          textDecoration: "none",
+          display: "inline-block",
         }}>
           Get an audit →
-        </button>
+        </a>
       </nav>
 
       {/* ── 2. HERO ── */}
@@ -59,7 +61,7 @@ export default function Home() {
           background: "var(--white)",
         }}>
           <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--red)", flexShrink: 0, display: "inline-block" }} />
-          Paid media agency for DTC ecommerce brands spending $10K+/mo on Meta Ads
+          Paid media agency for SaaS companies spending $10K+/mo on Meta Ads
         </div>
 
         <h1 style={{
@@ -73,8 +75,8 @@ export default function Home() {
           marginBottom: "1.25rem",
         }}>
           Your next{" "}
-          <em style={{ fontStyle: "normal", color: "var(--red)" }}>$300K</em>
-          {" "}in revenue<br />
+          <em style={{ fontStyle: "normal", color: "var(--red)" }}>$100K</em>
+          {" "}in MRR<br />
           is already in your ad account.
         </h1>
 
@@ -86,12 +88,12 @@ export default function Home() {
           maxWidth: 560,
           margin: "0 auto 2rem",
         }}>
-          You&apos;re spending $10K+ a month and you know it&apos;s not performing the way it should. The budget is going somewhere — we help you find exactly where, fix it, and turn it into the growth you&apos;ve been expecting.
+          You&apos;re spending $10K+ a month and your CAC keeps climbing while trial-to-paid stays flat. We find exactly where your budget is leaking, fix the funnel, and turn ad spend into MRR you can actually scale.
         </p>
 
-        <button className="btn-primary m-btn-full">
+        <a href="https://calendly.com/admin-agencyastra/30min" target="_blank" rel="noopener noreferrer" className="btn-primary m-btn-full">
           See exactly where your money is going
-        </button>
+        </a>
         <p style={{ marginTop: "0.75rem", fontSize: "0.75rem", color: "var(--g400)" }}>
           No commitment. No agency pitch. Just answers.
         </p>
@@ -111,10 +113,10 @@ export default function Home() {
           gridTemplateColumns: "repeat(4, 1fr)",
         }}>
           {[
-            { num: "15+", lbl: "DTC Brands Scaled" },
-            { num: "50%", lbl: "Average CPA Reduction" },
+            { num: "15+", lbl: "Companies Scaled" },
+            { num: "50%", lbl: "Average CAC Reduction" },
             { num: "2.8x", lbl: "Average Revenue Growth" },
-            { num: "30 Days", lbl: "To first results" },
+            { num: "30 Days", lbl: "To First Results" },
           ].map((s, i, arr) => (
             <div key={i} className="m-trust-stat" style={{
               padding: "1.25rem 1.5rem",
@@ -172,7 +174,7 @@ export default function Home() {
               marginBottom: "1.25rem",
               fontWeight: 500,
             }}>
-              Trusted by brands
+              Trusted by operators
             </p>
             <div className="marquee-outer">
               <div className="marquee-track">
@@ -211,10 +213,10 @@ export default function Home() {
           </h2>
 
           <p style={{ fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.7, color: "var(--g600)", marginBottom: "0.75rem" }}>
-            A senior closed the sale. A junior ran your account. Three months later you were staring at a report full of clicks and impressions wondering where your money went.
+            A senior closed the sale. A junior ran your account. Three months later you were staring at a report full of clicks and signups that never converted to paid, wondering where your budget went.
           </p>
           <p style={{ fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.7, color: "var(--g600)", marginBottom: "0.75rem" }}>
-            You couldn&apos;t get anyone on the phone. Your ad account was in their name. And when you finally walked away, you lost everything — the data, the history, the optimizations. Back to zero.
+            You couldn&apos;t get anyone on the phone. Your ad account was in their name. And when you finally walked away, you lost everything. The data, the history, the attribution work. Back to zero.
           </p>
 
           <div style={{
@@ -243,9 +245,9 @@ export default function Home() {
             background: "var(--white)",
           }}>
             {[
-              { n: "01", title: "Wrong priorities", desc: "Your budget was going to what looked busy — not to what was actually generating revenue." },
-              { n: "02", title: "A weak offer", desc: "No amount of spend fixes a product that isn't positioned to convert. You need the right message before you need more traffic." },
-              { n: "03", title: "Zero visibility", desc: "You had no clear picture of what was working, what wasn't, and why. So every decision was a guess." },
+              { n: "01", title: "Wrong priorities", desc: "Your budget was going to what looked busy on the dashboard, not to what was actually driving trial-to-paid conversion and MRR." },
+              { n: "02", title: "A weak funnel", desc: "No amount of ad spend fixes a funnel that drops users between signup and activation. You need the right message, the right landing page, and the right onboarding before you need more traffic." },
+              { n: "03", title: "Zero visibility", desc: "You had no clear picture of which campaigns were generating paying customers versus burning budget on signups that churned. Every decision was a guess." },
             ].map((item, i, arr) => (
               <div key={i} style={{
                 display: "flex",
@@ -264,7 +266,7 @@ export default function Home() {
           </div>
 
           <p style={{ fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.7, color: "var(--g600)", marginTop: "1.25rem" }}>
-            That&apos;s what Astra fixes. Not just the campaigns — the entire revenue equation behind them.
+            That&apos;s what Astra fixes. Not just the campaigns. The entire customer acquisition equation behind them.
           </p>
         </div>
       </section>
@@ -290,22 +292,22 @@ export default function Home() {
           <div className="m-testi-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }}>
             {[
               {
+                quote: "We were completely dependent on referrals. Now we have 8 to 12 new gyms signing every month across 12 countries, on autopilot.",
+                photo: "/testimonial-xcore.png",
+                name: "José Quintero",
+                role: "CEO · Xcore.fit · Mexico",
+              },
+              {
                 quote: "Before Astra, we were spending $10K a month with no idea what was working. Within 60 days we crossed $1M in monthly revenue. The clarity alone was worth it.",
                 photo: "/testimonial-idaca.png",
                 name: "Leyse Orlando",
                 role: "General Manager · IDACA · Venezuela",
               },
               {
-                quote: "We went from 35 orders a day to over 100 in 75 days. We had to pause because we ran out of inventory — a problem I'd never had before.",
+                quote: "We went from 35 orders a day to over 100 in 75 days. We had to pause because we ran out of inventory, a problem I\u0027d never had before.",
                 photo: "/testimonial-onetool.png",
                 name: "Oswaldo Arias",
                 role: "CEO · OneTool · Colombia",
-              },
-              {
-                quote: "We were completely dependent on referrals. Now we have 8 to 12 new gyms signing every month across 12 countries — on autopilot.",
-                photo: "/testimonial-xcore.png",
-                name: "José Quintero",
-                role: "CEO · Xcore.fit · Mexico",
               },
             ].map((t, i) => (
               <div key={i} style={{
@@ -373,12 +375,12 @@ export default function Home() {
               </div>
               {[
                 "A junior you never met runs your account",
-                "Monthly PDF full of vanity metrics",
-                "They own your ad account — you leave with nothing",
+                "Monthly PDF full of clicks, impressions, and vanity metrics",
+                "They own your ad account and you leave with nothing",
                 "3 months of \"testing\" before anything moves",
-                "Generic playbook from their last client",
+                "Generic playbook from their last ecommerce client",
                 "You're one of 40+ clients in a queue",
-                "Still running ads the same way they did 5 years ago",
+                "Built for ecommerce playbooks, not SaaS funnels",
               ].map((item, i, arr) => (
                 <div key={i} style={{
                   padding: "0.85rem 1.5rem",
@@ -414,12 +416,12 @@ export default function Home() {
               </div>
               {[
                 "The strategist who built your plan runs your account",
-                "Real-time visibility into every dollar spent — with a live dashboard",
-                "Your account, your name, your data — always",
+                "Real-time visibility into CAC, trial-to-paid, and pipeline velocity on a live dashboard",
+                "Your account, your name, your data, always",
                 "First results within 30 days",
-                "Strategy built around your product, margins, and market",
-                "Small roster — we know your numbers better than you do",
-                "AI-powered optimization — faster insights, sharper creative, better results",
+                "Strategy built around your funnel, your CAC payback, and your LTV",
+                "Small roster. We know your numbers better than you do",
+                "AI-powered research, senior-led strategy, faster insights",
               ].map((item, i, arr) => (
                 <div key={i} style={{
                   padding: "0.85rem 1.5rem",
@@ -477,8 +479,8 @@ export default function Home() {
             }} />
 
             {[
-              { label: "Day 1–3", desc: "Onboarding call, account audit, competitor teardown." },
-              { label: "Day 4–7", desc: "Tracking rebuilt, creative library produced, test campaigns live." },
+              { label: "Day 1–3", desc: "Onboarding call, full account audit, competitor and funnel teardown." },
+              { label: "Day 4–7", desc: "Attribution rebuilt, creative library produced, test campaigns live." },
               { label: "Day 8–14", desc: "First winning creative identified and ready to scale." },
             ].map((step, i) => (
               <div key={i} style={{
@@ -546,15 +548,15 @@ export default function Home() {
             {[
               {
                 title: "Winning ads, mapped.",
-                desc: "Every top-performing ad in your niche from the last 90 days. We know what\u2019s converting before we write a single line of copy.",
+                desc: "Every top-performing ad in your category from the last 90 days. We know what\u2019s converting before we write a single line of copy.",
               },
               {
                 title: "Angles, decoded.",
-                desc: "AI clusters the messaging patterns your competitors are using and surfaces the angles you\u2019re missing.",
+                desc: "AI clusters the positioning patterns your competitors are using and surfaces the angles your funnel is missing.",
               },
               {
                 title: "Funnels, audited.",
-                desc: "We map your top competitors\u2019 landing pages and find their leaks before we build yours.",
+                desc: "We map your top competitors\u2019 trial flows, demo bookings, and pricing pages, and find their leaks before we build yours.",
               },
             ].map((card, i) => (
               <div key={i} style={{
@@ -595,10 +597,10 @@ export default function Home() {
               lineHeight: 1.3,
               marginBottom: "0.5rem",
             }}>
-              Your day-one creatives aren&apos;t a gamble. They&apos;re backed by hundreds of ads that already proved what works.
+              Your day-one creatives aren&apos;t a gamble. They&apos;re backed by hundreds of ads that already proved what works in your category.
             </p>
             <p style={{ fontSize: "0.84rem", color: "var(--g400)", fontWeight: 400 }}>
-              What takes traditional agencies <span style={{ color: "var(--red)", fontWeight: 600 }}>60 days</span> of testing, we compress into <span style={{ color: "var(--red)", fontWeight: 600 }}>less than 20</span>.
+              What used to take a month of testing now happens in less than a week.
             </p>
           </div>
         </div>
@@ -623,20 +625,20 @@ export default function Home() {
             lineHeight: 1.05,
             marginBottom: "1.25rem",
           }}>
-            Find the revenue you&apos;re{" "}
+            Find the MRR you&apos;re{" "}
             <em style={{ fontStyle: "normal", textDecoration: "underline", textDecorationColor: "rgba(255,255,255,0.4)" }}>
               already leaving
             </em>{" "}
             on the table.
           </h2>
           <p style={{ fontSize: "0.95rem", fontWeight: 300, color: "rgba(255,255,255,0.75)", lineHeight: 1.75, marginBottom: "2.5rem" }}>
-            We&apos;ll look at your real account, show you exactly where the leaks are, and give you a clear picture of what growth actually looks like from here. No pitch. No pressure.
+            We&apos;ll look at your real account, show you exactly where the leaks are, and give you a clear picture of what predictable, scalable customer acquisition looks like from here. No pitch. No pressure.
           </p>
-          <button className="btn-white m-btn-full">
+          <a href="https://calendly.com/admin-agencyastra/30min" target="_blank" rel="noopener noreferrer" className="btn-white m-btn-full">
             See exactly where your money is going →
-          </button>
+          </a>
           <p style={{ marginTop: "1.25rem", fontSize: "0.72rem", color: "rgba(255,255,255,0.45)" }}>
-            Available for DTC ecommerce brands with physical products spending $8K+/mo on Meta Ads.
+            Available for SaaS companies spending $5K+/mo on Meta Ads.
           </p>
         </div>
       </section>
@@ -652,7 +654,7 @@ export default function Home() {
       }}>
         <img src="/logo-astra.png" alt="Astra Agency" style={{ height: 90, filter: "brightness(0) invert(1)" }} />
         <p style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.3)" }}>
-          © 2025 Astra Agency. All rights reserved.
+          © 2026 Astra Agency. All rights reserved.
         </p>
       </footer>
 
