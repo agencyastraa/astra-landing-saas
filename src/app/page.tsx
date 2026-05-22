@@ -115,7 +115,7 @@ export default function Home() {
           {[
             { num: "15+", lbl: "Companies Scaled" },
             { num: "50%", lbl: "Average CAC Reduction" },
-            { num: "2.8x", lbl: "Average Revenue Growth" },
+            { num: "3.2x", lbl: "Average Revenue Growth" },
             { num: "30 Days", lbl: "To First Results" },
           ].map((s, i, arr) => (
             <div key={i} className="m-trust-stat" style={{
@@ -178,7 +178,7 @@ export default function Home() {
             </p>
             <div className="marquee-outer">
               <div className="marquee-track">
-                {[...logos, ...logos].map((logo, i) => (
+                {[...logos, ...logos, ...logos].map((logo, i) => (
                   <div key={i} className="marquee-logo">
                     <img src={logo.src} alt={logo.alt} style={logo.height ? { height: logo.height } : undefined} />
                   </div>

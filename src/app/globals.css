@@ -54,8 +54,8 @@ body {
 
 /* ── LOGO MARQUEE ── */
 @keyframes marquee-ltr {
-  from { transform: translateX(-50%); }
-  to   { transform: translateX(0%); }
+  from { transform: translate3d(-33.333%, 0, 0); }
+  to   { transform: translate3d(0%, 0, 0); }
 }
 
 .marquee-outer {
@@ -69,6 +69,9 @@ body {
   align-items: center;
   gap: 5rem;
   animation: marquee-ltr 30s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .marquee-track:hover {
@@ -119,19 +122,19 @@ body {
   }
   /* eyebrow pill: smaller, left */
   .m-hero > div:first-child {
-    font-size: 0.62rem !important;
-    padding: 0.35rem 0.85rem !important;
+    font-size: 0.68rem !important;
+    padding: 0.4rem 0.9rem !important;
     margin-bottom: 1.5rem !important;
   }
   /* h1 */
   .m-hero h1 {
-    font-size: clamp(2.4rem, 9vw, 3.2rem) !important;
+    font-size: clamp(2.2rem, 8vw, 2.8rem) !important;
     margin-bottom: 1.25rem !important;
   }
   /* subtext */
   .m-hero-sub {
-    font-size: 0.95rem !important;
-    line-height: 1.7 !important;
+    font-size: 1rem !important;
+    line-height: 1.75 !important;
     margin: 0 0 1.75rem !important;
     max-width: 100% !important;
   }
@@ -165,7 +168,10 @@ body {
     border-right: 0.5px solid rgba(255,255,255,0.06) !important;
   }
   .m-trust-stat > div:first-child {
-    font-size: 1.6rem !important;
+    font-size: 1.8rem !important;
+  }
+  .m-trust-stat > div:last-child {
+    font-size: 0.72rem !important;
   }
   .m-trust-divider {
     display: none !important;
@@ -193,13 +199,13 @@ body {
   }
   /* headings */
   .m-section h2 {
-    font-size: clamp(1.6rem, 7vw, 2.2rem) !important;
+    font-size: clamp(1.7rem, 7vw, 2.2rem) !important;
     margin-bottom: 1.5rem !important;
   }
   /* body text: comfortable line length */
   .m-section p {
-    font-size: 0.95rem !important;
-    line-height: 1.75 !important;
+    font-size: 1rem !important;
+    line-height: 1.8 !important;
   }
 
   /* ── CASE STUDIES: swap layouts ── */
@@ -210,7 +216,7 @@ body {
     overflow: visible !important;
   }
   .m-cases h2 {
-    font-size: clamp(1.6rem, 7vw, 2.2rem) !important;
+    font-size: clamp(1.7rem, 7vw, 2.2rem) !important;
   }
   /* header: stack vertically on mobile */
   .cases-header {
@@ -256,6 +262,12 @@ body {
     white-space: nowrap !important;
   }
 
+  /* ── COMPARISON: stack on mobile ── */
+  .m-comparison-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
   /* ── OUR EDGE ── */
   .m-edge-grid {
     grid-template-columns: 1fr !important;
@@ -283,9 +295,13 @@ body {
     text-align: left !important;
   }
   .m-cta h2 {
-    font-size: clamp(1.8rem, 8vw, 2.8rem) !important;
+    font-size: clamp(1.9rem, 8vw, 2.8rem) !important;
     line-height: 1.1 !important;
     margin-bottom: 1rem !important;
+  }
+  .m-cta p {
+    font-size: 1rem !important;
+    line-height: 1.75 !important;
   }
   .m-cta > div > p:last-child {
     text-align: left;
