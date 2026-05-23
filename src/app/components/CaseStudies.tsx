@@ -1,92 +1,10 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
+import { cases } from "./caseStudiesData";
 
 const fd = "var(--font-display), sans-serif";
 const fb = "var(--font-body), sans-serif";
-
-const cases = [
-  {
-    tab: "Xcore.fit",
-    industry: "B2B SaaS",
-    client: "Xcore.fit",
-    tag: "B2B SaaS · Vertical SaaS · 12 Countries",
-    before:
-      "Xcore.fit was operating in 12 countries but almost every new gym signup came from a referral or a flight their sales team took. Growth was real, but completely dependent on human effort. No system in place. If the team stopped moving, the pipeline stopped moving. They needed predictable, paid acquisition that could scale MRR without scaling headcount.",
-    badge: null,
-    bigNum: "8–12",
-    bigLabel: "New customers/month across multiple countries simultaneously",
-    metrics: [
-      { val: "$5K", key: "Monthly ad spend" },
-      { val: "12", key: "Countries active" },
-    ],
-    rows: [
-      { k: "Previous model", v: "Referrals + travel" },
-      { k: "Now", v: "Automated paid acquisition + chatbot qualification" },
-      { k: "Revenue model", v: "Monthly subscription, compounding MRR" },
-    ],
-  },
-  {
-    tab: "Tu Proyecto Fitness",
-    industry: "B2B High Ticket",
-    client: "Tu Proyecto Fitness",
-    tag: "B2B High Ticket · Pipeline Acquisition · LATAM",
-    before:
-      "Tu Proyecto Fitness had a strong high-ticket offer but their pipeline ran entirely on referrals and word of mouth. Growth was capped by how many conversations their team could have. They tried paid ads before, but the leads coming in weren't qualified and ended up wasting their team's time. The same pattern most B2B SaaS sales teams run into when they turn on paid for the first time.",
-    badge: null,
-    bigNum: "38x",
-    bigLabel: "ROAS. $6K spend, $230K revenue",
-    metrics: [
-      { val: "$200K+", key: "Single client value" },
-      { val: "2 months", key: "Timeline" },
-    ],
-    rows: [
-      { k: "Ad spend", v: "$6K total" },
-      { k: "Channel", v: "Meta Ads" },
-      { k: "Key insight", v: "3D design as funnel entry point" },
-    ],
-  },
-  {
-    tab: "IDACA",
-    industry: "Multi-Location Healthcare",
-    client: "IDACA",
-    tag: "Multi-Location Healthcare · 9 Locations · USA",
-    before:
-      "IDACA was generating $809K/month across 9 locations but had no visibility into which ones were actually driving revenue. Budget was spread evenly across all of them, nothing moved, and growth had been flat for 6 months. They kept paying for reports full of clicks and impressions that didn't tell them anything useful. The same trap SaaS teams fall into when attribution breaks and the dashboard stops telling the truth.",
-    badge: null,
-    bigNum: "$1.12M",
-    bigLabel: "Monthly revenue in 90 days, up from $809K",
-    metrics: [
-      { val: "+38%", key: "Revenue growth" },
-      { val: "Day 60", key: "$1M/month milestone" },
-    ],
-    rows: [
-      { k: "Ad spend", v: "$10K to $14K/mo" },
-      { k: "Timeline", v: "90 days" },
-      { k: "Channel", v: "Meta Ads" },
-    ],
-  },
-  {
-    tab: "OneTool",
-    industry: "DTC Ecommerce",
-    client: "OneTool",
-    tag: "DTC Ecommerce · Physical Product · LATAM",
-    before:
-      "OneTool was doing 25 orders a day with CPA increasing month over month. The founder was managing ads alone with no visibility into what was actually working. Every time they pushed more budget, cost per purchase went up. Creative had gone stale, audiences were burned out, and growth had completely stalled. The same compounding problem we solve in SaaS funnels when CAC keeps climbing month over month.",
-    badge: null,
-    bigNum: "70+",
-    bigLabel: "Daily orders in 3.5 months, up from 25",
-    metrics: [
-      { val: "50%", key: "CPA reduction" },
-      { val: "3.5 mo", key: "Timeline" },
-    ],
-    rows: [
-      { k: "Ad spend", v: "$2,500/mo to $5,000/mo" },
-      { k: "Revenue", v: "$4M COP/week to $8-9M COP/week" },
-      { k: "Channel", v: "Meta Ads" },
-    ],
-  },
-];
 
 export default function CaseStudies() {
   const [active, setActive] = useState(0);
@@ -111,262 +29,699 @@ export default function CaseStudies() {
   };
   const onTouchEnd = () => {
     const diff = touchStart.current - touchEnd.current;
-    if (Math.abs(diff) > 50) {
-      goTo(diff > 0 ? 1 : -1);
-    }
+    if (Math.abs(diff) > 50) goTo(diff > 0 ? 1 : -1);
   };
 
-  const arrowBtn = (dir: "left" | "right") => (
-    <button
-      onClick={() => goTo(dir === "right" ? 1 : -1)}
-      aria-label={dir === "right" ? "Next case" : "Previous case"}
+  const renderTabs = (prefix: string) => (
+    <div
+      role="tablist"
       style={{
-        width: 40,
-        height: 40,
-        borderRadius: "50%",
-        border: "1px solid rgba(255,255,255,0.15)",
-        background: "transparent",
-        color: "rgba(255,255,255,0.6)",
-        fontSize: "1rem",
-        cursor: "pointer",
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexShrink: 0,
+        border: "0.5px solid rgba(255,255,255,0.1)",
+        borderRadius: 8,
+        marginBottom: "2rem",
+        background: "rgba(255,255,255,0.04)",
       }}
     >
-      {dir === "left" ? "←" : "→"}
-    </button>
+      {cases.map((cs, i) => (
+        <button
+          key={i}
+          role="tab"
+          id={`${prefix}-tab-${i}`}
+          aria-selected={active === i}
+          aria-controls={`${prefix}-panel-${i}`}
+          onClick={() => setActive(i)}
+          style={{
+            flex: 1,
+            padding: "1rem 0.5rem",
+            minHeight: 44,
+            background:
+              active === i ? "rgba(241,42,41,0.15)" : "transparent",
+            border: "none",
+            borderRight:
+              i < cases.length - 1
+                ? "0.5px solid rgba(255,255,255,0.08)"
+                : "none",
+            fontFamily: fb,
+            fontSize: "0.78rem",
+            fontWeight: active === i ? 500 : 400,
+            color:
+              active === i ? "var(--red)" : "rgba(255,255,255,0.5)",
+            textAlign: "center",
+            lineHeight: 1.4,
+            cursor: "pointer",
+          }}
+        >
+          {cs.tab}
+          <span
+            style={{
+              display: "block",
+              fontSize: "0.65rem",
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color:
+                active === i
+                  ? "rgba(241,42,41,0.5)"
+                  : "rgba(255,255,255,0.2)",
+              marginTop: 2,
+            }}
+          >
+            {cs.tabSub}
+          </span>
+        </button>
+      ))}
+    </div>
   );
+
+  const renderQuote = (photoSize: number) => (
+    <div>
+      <div
+        style={{
+          fontFamily: fd,
+          fontSize: "2rem",
+          fontWeight: 900,
+          color: "var(--red)",
+          lineHeight: 0.8,
+          marginBottom: "0.5rem",
+        }}
+      >
+        &ldquo;
+      </div>
+      <blockquote style={{ margin: 0, padding: 0 }}>
+        <p
+          style={{
+            fontSize: "0.88rem",
+            fontWeight: 300,
+            lineHeight: 1.65,
+            color: "rgba(255,255,255,0.65)",
+            fontStyle: "normal",
+            marginBottom: "0.75rem",
+          }}
+        >
+          {c.quote}
+        </p>
+      </blockquote>
+      <div
+        style={{
+          height: "0.5px",
+          background: "rgba(255,255,255,0.08)",
+          marginBottom: "0.75rem",
+        }}
+      />
+      <cite
+        style={{
+          fontStyle: "normal",
+          display: "flex",
+          alignItems: "center",
+          gap: "0.75rem",
+        }}
+      >
+        <img
+          src={c.quotePhoto}
+          alt={`${c.quoteName}, ${c.quoteTitle}`}
+          loading="lazy"
+          style={{
+            width: photoSize,
+            height: photoSize,
+            borderRadius: "50%",
+            objectFit: "cover",
+            flexShrink: 0,
+          }}
+        />
+        <div>
+          <div
+            style={{
+              fontWeight: 600,
+              fontSize: "0.85rem",
+              color: "var(--white)",
+            }}
+          >
+            {c.quoteName}
+          </div>
+          <div
+            style={{
+              fontSize: "0.7rem",
+              color: "rgba(255,255,255,0.35)",
+            }}
+          >
+            {c.quoteTitle}
+          </div>
+        </div>
+      </cite>
+    </div>
+  );
+
+  const renderProofTiles = (size: "desktop" | "mobile") => {
+    const radius = size === "mobile" ? 10 : 6;
+    const padding = size === "mobile" ? "1.1rem 1rem" : "1rem";
+    const valSize = size === "mobile" ? "1.4rem" : "1.6rem";
+    return (
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: size === "mobile" ? "0.75rem" : "1rem",
+        }}
+      >
+        <div
+          style={{
+            background: "rgba(241,42,41,0.12)",
+            borderRadius: radius,
+            padding,
+          }}
+        >
+          <div
+            style={{
+              fontFamily: fd,
+              fontSize: valSize,
+              fontWeight: 800,
+              color: "var(--red)",
+              lineHeight: 1,
+            }}
+          >
+            {c.proofTiles[0].value}
+          </div>
+          <div
+            style={{
+              fontSize: "0.72rem",
+              color: "rgba(255,255,255,0.4)",
+              fontWeight: 300,
+              marginTop: 4,
+            }}
+          >
+            {c.proofTiles[0].caption}
+          </div>
+        </div>
+        <div
+          style={{
+            background:
+              size === "mobile" ? "#1a1614" : "rgba(255,255,255,0.05)",
+            borderRadius: radius,
+            padding,
+          }}
+        >
+          <div
+            style={{
+              fontFamily: fd,
+              fontSize: valSize,
+              fontWeight: 800,
+              color: "var(--white)",
+              lineHeight: 1,
+            }}
+          >
+            {c.proofTiles[1].value}
+          </div>
+          <div
+            style={{
+              fontSize: "0.72rem",
+              color: "rgba(255,255,255,0.4)",
+              fontWeight: 300,
+              marginTop: 4,
+            }}
+          >
+            {c.proofTiles[1].caption}
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <section
+      className="m-cases"
       style={{
         padding: "4rem 4rem",
         background: "var(--black)",
         borderTop: "0.5px solid rgba(255,255,255,0.06)",
       }}
-      className="m-cases"
     >
       <div style={{ maxWidth: 960, margin: "0 auto" }}>
-
-        {/* Header */}
-        <div className="cases-header" style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "flex-end",
-          marginBottom: "1.75rem",
-          flexWrap: "wrap",
-          gap: "1rem",
-        }}>
-          <h2 style={{
-            fontFamily: fd,
-            fontSize: "clamp(2rem, 4vw, 3rem)",
-            fontWeight: 800,
-            textTransform: "uppercase",
-            color: "var(--white)",
-            lineHeight: 1.1,
-          }}>
-            Real accounts.<br />Real numbers.
+        {/* ── HEADER ── */}
+        <div
+          className="cases-header"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-end",
+            marginBottom: "1.75rem",
+            flexWrap: "wrap",
+            gap: "1rem",
+          }}
+        >
+          <h2
+            style={{
+              fontFamily: fd,
+              fontSize: "clamp(2rem, 4vw, 3rem)",
+              fontWeight: 800,
+              textTransform: "uppercase",
+              color: "var(--white)",
+              lineHeight: 1.1,
+            }}
+          >
+            Real accounts.
+            <br />
+            Real numbers.
           </h2>
-          <p className="cases-sub" style={{
-            fontSize: "0.82rem",
-            color: "rgba(255,255,255,0.45)",
-            maxWidth: 220,
-            textAlign: "right",
-            lineHeight: 1.5,
-          }}>
-            Results from active clients. Not cherry-picked outliers.
+          <p
+            className="cases-sub"
+            style={{
+              fontSize: "0.82rem",
+              color: "rgba(255,255,255,0.45)",
+              maxWidth: 280,
+              textAlign: "right",
+              lineHeight: 1.5,
+            }}
+          >
+            Active client results. No outliers, no ad-spend theater.
           </p>
         </div>
 
-        {/* ══════ DESKTOP LAYOUT ══════ */}
-        <div className="cases-desktop" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
-          <div role="tablist" style={{
-            display: "flex",
-            border: "0.5px solid rgba(255,255,255,0.1)",
-            borderRadius: 8,
-            marginBottom: "2rem",
-            background: "rgba(255,255,255,0.04)",
-          }}>
-            {cases.map((cs, i) => (
-              <button key={i} role="tab" aria-selected={active === i} onClick={() => setActive(i)} style={{
-                flex: 1, padding: "1rem 0.5rem",
-                background: active === i ? "rgba(241,42,41,0.15)" : "transparent",
-                border: "none",
-                borderRight: i < cases.length - 1 ? "0.5px solid rgba(255,255,255,0.08)" : "none",
-                fontFamily: fb, fontSize: "0.78rem", fontWeight: active === i ? 500 : 400,
-                color: active === i ? "var(--red)" : "rgba(255,255,255,0.5)",
-                textAlign: "center", lineHeight: 1.4, cursor: "pointer",
-              }}>
-                {cs.tab}
-                <span style={{ display: "block", fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", color: active === i ? "rgba(241,42,41,0.5)" : "rgba(255,255,255,0.2)", marginTop: 2 }}>
-                  {cs.industry}
-                </span>
-              </button>
-            ))}
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, background: "rgba(255,255,255,0.06)", borderRadius: 8 }}>
-            <div style={{ background: "#1a1614", padding: "2.5rem 2.25rem", borderRadius: "8px 0 0 8px" }}>
-              <p style={{ fontSize: "0.65rem", letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: 500, marginBottom: "1.25rem", color: "rgba(255,255,255,0.35)" }}>The situation</p>
-              <div style={{ fontFamily: fd, fontSize: "1.8rem", fontWeight: 900, textTransform: "uppercase", color: "var(--white)", lineHeight: 1, marginBottom: "0.25rem" }}>{c.client}</div>
-              <div style={{ fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "2rem", fontWeight: 300 }}>{c.tag}</div>
-              <div style={{ background: "rgba(255,255,255,0.04)", borderRadius: 6, padding: "1.25rem 1.5rem", borderLeft: "2px solid rgba(241,42,41,0.4)" }}>
-                <div style={{ fontSize: "0.68rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", marginBottom: "0.6rem", fontWeight: 500 }}>Before Astra</div>
-                <p style={{ fontSize: "0.88rem", fontWeight: 300, lineHeight: 1.7, color: "rgba(255,255,255,0.7)" }}>{c.before}</p>
+        {/* ══════════════════════════════════════
+            DESKTOP LAYOUT
+        ══════════════════════════════════════ */}
+        <div className="cases-desktop">
+          {renderTabs("dt")}
+
+          <div
+            role="tabpanel"
+            id={`dt-panel-${active}`}
+            aria-labelledby={`dt-tab-${active}`}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: 1,
+              background: "rgba(255,255,255,0.06)",
+              borderRadius: 8,
+            }}
+          >
+            {/* LEFT — situation */}
+            <div
+              style={{
+                background: "#1a1614",
+                padding: "2.5rem 2.25rem",
+                borderRadius: "8px 0 0 8px",
+              }}
+            >
+              <div
+                style={{
+                  fontFamily: fd,
+                  fontSize: "1.8rem",
+                  fontWeight: 900,
+                  textTransform: "uppercase",
+                  color: "var(--white)",
+                  lineHeight: 1,
+                  marginBottom: "0.25rem",
+                }}
+              >
+                {c.client}
+              </div>
+              <div
+                style={{
+                  fontSize: "0.72rem",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: "rgba(255,255,255,0.35)",
+                  marginBottom: "2rem",
+                  fontWeight: 300,
+                }}
+              >
+                {c.subtitle}
+              </div>
+
+              {/* Before Astra */}
+              <div
+                style={{
+                  background: "rgba(255,255,255,0.04)",
+                  borderRadius: 6,
+                  padding: "1.25rem 1.5rem",
+                  borderLeft: "2px solid rgba(241,42,41,0.4)",
+                  marginBottom: "1.5rem",
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: "0.68rem",
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    color: "rgba(255,255,255,0.3)",
+                    marginBottom: "0.6rem",
+                    fontWeight: 500,
+                  }}
+                >
+                  Before Astra
+                </div>
+                <p
+                  style={{
+                    fontSize: "0.88rem",
+                    fontWeight: 300,
+                    lineHeight: 1.7,
+                    color: "rgba(255,255,255,0.7)",
+                  }}
+                >
+                  {c.before}
+                </p>
+              </div>
+
+              {/* What changed */}
+              <div>
+                <div
+                  style={{
+                    fontSize: "0.68rem",
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    color: "rgba(255,255,255,0.3)",
+                    marginBottom: "0.6rem",
+                    fontWeight: 500,
+                  }}
+                >
+                  What changed
+                </div>
+                <p
+                  style={{
+                    fontSize: "0.88rem",
+                    fontWeight: 300,
+                    lineHeight: 1.7,
+                    color: "rgba(255,255,255,0.7)",
+                  }}
+                >
+                  {c.operationalChange}
+                </p>
               </div>
             </div>
-            <div style={{ background: "#221e1b", padding: "2.5rem 2.25rem", display: "flex", flexDirection: "column", gap: "1.5rem", borderRadius: "0 8px 8px 0" }}>
-              <p style={{ fontSize: "0.65rem", letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: 500, color: "var(--red)" }}>Results</p>
-              {c.badge && <span style={{ display: "inline-block", fontSize: "0.62rem", letterSpacing: "0.1em", textTransform: "uppercase", background: "rgba(241,42,41,0.15)", color: "var(--red)", padding: "2px 8px", borderRadius: 3, fontWeight: 500, alignSelf: "flex-start" }}>{c.badge}</span>}
-              <div style={{ borderBottom: "0.5px solid rgba(255,255,255,0.08)", paddingBottom: "1.5rem" }}>
-                <div style={{ fontFamily: fd, fontSize: "3.5rem", fontWeight: 900, color: "var(--red)", lineHeight: 1 }}>{c.bigNum}</div>
-                <div style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.5)", fontWeight: 300, marginTop: "0.2rem" }}>{c.bigLabel}</div>
+
+            {/* RIGHT — results */}
+            <div
+              style={{
+                background: "#221e1b",
+                padding: "2.5rem 2.25rem",
+                display: "flex",
+                flexDirection: "column",
+                gap: "1.5rem",
+                borderRadius: "0 8px 8px 0",
+              }}
+            >
+              <p
+                style={{
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  fontWeight: 500,
+                  color: "var(--red)",
+                }}
+              >
+                Results
+              </p>
+
+              {/* Hero metric */}
+              <div
+                aria-label={c.heroAriaLabel}
+                style={{
+                  borderBottom: "0.5px solid rgba(255,255,255,0.08)",
+                  paddingBottom: "1.5rem",
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: fd,
+                    fontSize: "3.5rem",
+                    fontWeight: 900,
+                    color: "var(--red)",
+                    lineHeight: 1,
+                  }}
+                >
+                  {c.heroMetric}
+                </div>
+                <div
+                  style={{
+                    fontSize: "0.78rem",
+                    color: "rgba(255,255,255,0.5)",
+                    fontWeight: 300,
+                    marginTop: "0.2rem",
+                  }}
+                >
+                  {c.heroCaption}
+                </div>
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
-                {c.metrics.map((m, i) => (
-                  <div key={i}>
-                    <div style={{ fontFamily: fd, fontSize: "1.6rem", fontWeight: 800, color: "var(--white)", lineHeight: 1 }}>{m.val}</div>
-                    <div style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.4)", fontWeight: 300, marginTop: 2 }}>{m.key}</div>
-                  </div>
-                ))}
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.35rem", marginTop: "auto" }}>
-                {c.rows.map((r, i) => (
-                  <div key={i} style={{ display: "flex", justifyContent: "space-between", fontSize: "0.78rem", borderBottom: i < c.rows.length - 1 ? "0.5px solid rgba(255,255,255,0.06)" : "none", paddingBottom: "0.35rem" }}>
-                    <span style={{ color: "rgba(255,255,255,0.4)", fontWeight: 300 }}>{r.k}</span>
-                    <span style={{ color: "var(--white)", fontWeight: 500 }}>{r.v}</span>
-                  </div>
-                ))}
-              </div>
+
+              {/* Proof tiles */}
+              {renderProofTiles("desktop")}
+
+              {/* Quote */}
+              {renderQuote(56)}
             </div>
           </div>
 
-          {/* Desktop dots + arrows below card */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "1rem", marginTop: "1.5rem" }}>
-            {arrowBtn("left")}
+          {/* Desktop arrows + dots */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "1rem",
+              marginTop: "1.5rem",
+            }}
+          >
+            <button
+              onClick={() => goTo(-1)}
+              aria-label="Previous case study"
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: "50%",
+                border: "1px solid rgba(255,255,255,0.15)",
+                background: "transparent",
+                color: "rgba(255,255,255,0.6)",
+                fontSize: "1rem",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexShrink: 0,
+              }}
+            >
+              &larr;
+            </button>
             <div style={{ display: "flex", gap: "0.5rem" }}>
               {cases.map((_, i) => (
-                <button key={i} onClick={() => setActive(i)} aria-label={`Go to case ${i + 1}`} style={{
-                  width: active === i ? 24 : 8,
-                  height: 8,
-                  borderRadius: 100,
-                  border: "none",
-                  background: active === i ? "var(--red)" : "rgba(255,255,255,0.15)",
-                  cursor: "pointer",
-                  padding: 0,
-                  transition: "width 0.3s ease, background 0.3s ease",
-                }} />
+                <button
+                  key={i}
+                  onClick={() => setActive(i)}
+                  aria-label={`Go to case study ${i + 1}`}
+                  style={{
+                    width: active === i ? 24 : 8,
+                    height: 8,
+                    borderRadius: 100,
+                    border: "none",
+                    background:
+                      active === i
+                        ? "var(--red)"
+                        : "rgba(255,255,255,0.15)",
+                    cursor: "pointer",
+                    padding: 0,
+                    transition:
+                      "width 0.3s ease, background 0.3s ease",
+                  }}
+                />
               ))}
             </div>
-            {arrowBtn("right")}
+            <button
+              onClick={() => goTo(1)}
+              aria-label="Next case study"
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: "50%",
+                border: "1px solid rgba(255,255,255,0.15)",
+                background: "transparent",
+                color: "rgba(255,255,255,0.6)",
+                fontSize: "1rem",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexShrink: 0,
+              }}
+            >
+              &rarr;
+            </button>
           </div>
         </div>
 
-        {/* ══════ MOBILE LAYOUT ══════ */}
-        <div className="cases-mobile" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+        {/* ══════════════════════════════════════
+            MOBILE LAYOUT
+            One card at a time, swipeable.
+            Top tabs only — no bottom pills.
+        ══════════════════════════════════════ */}
+        <div
+          className="cases-mobile"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
+          {renderTabs("mb")}
 
-          {/* Pill selector */}
-          <div className="cases-pills" style={{ display: "flex", gap: "0.5rem", marginBottom: "1.5rem", overflowX: "auto", paddingBottom: 4 }}>
-            {cases.map((cs, i) => (
-              <button key={i} onClick={() => setActive(i)} style={{
-                flexShrink: 0,
-                padding: "0.55rem 1.1rem",
-                borderRadius: 100,
-                border: active === i ? "none" : "1px solid rgba(255,255,255,0.15)",
-                background: active === i ? "var(--red)" : "transparent",
-                color: active === i ? "var(--white)" : "rgba(255,255,255,0.5)",
-                fontFamily: fb, fontSize: "0.82rem", fontWeight: active === i ? 600 : 400,
-                cursor: "pointer", whiteSpace: "nowrap",
-              }}>
-                {cs.tab}
-              </button>
-            ))}
-          </div>
-
-          {/* ── CLIENT + TAG ── */}
-          <div style={{ marginBottom: "1rem" }}>
-            <div style={{ fontFamily: fd, fontSize: "1.4rem", fontWeight: 900, textTransform: "uppercase", color: "var(--white)", lineHeight: 1 }}>{c.client}</div>
-            <div style={{ fontSize: "0.68rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginTop: "0.3rem", fontWeight: 300 }}>{c.tag}</div>
-          </div>
-
-          {/* ── SITUATION BLOCK ── */}
-          <div style={{
-            background: "#1a1614",
-            borderRadius: 10,
-            padding: "1.25rem",
-            marginBottom: "1rem",
-            borderLeft: "3px solid rgba(241,42,41,0.4)",
-          }}>
-            <div style={{ fontSize: "0.6rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", marginBottom: "0.5rem", fontWeight: 500 }}>
-              The situation
-            </div>
-            <div className="cases-mobile-text" style={{ fontSize: "0.9rem", fontWeight: 300, lineHeight: 1.7, color: "rgba(255,255,255,0.75)" }}>
-              {c.before}
-            </div>
-          </div>
-
-          {/* ── BIG RESULT ── */}
-          <div style={{
-            background: "var(--red)",
-            borderRadius: 10,
-            padding: "1.5rem 1.25rem",
-            marginBottom: "0.75rem",
-          }}>
-            <div style={{ fontSize: "0.6rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", marginBottom: "0.5rem", fontWeight: 500 }}>
-              Results
-              {c.badge && (
-                <span style={{ marginLeft: "0.5rem", background: "rgba(0,0,0,0.15)", padding: "2px 8px", borderRadius: 3 }}>{c.badge}</span>
-              )}
-            </div>
-            <div style={{ fontFamily: fd, fontSize: "3rem", fontWeight: 900, color: "var(--white)", lineHeight: 1 }}>{c.bigNum}</div>
-            <div className="cases-mobile-text" style={{ fontSize: "0.88rem", color: "rgba(255,255,255,0.9)", fontWeight: 300, marginTop: "0.4rem", lineHeight: 1.5 }}>{c.bigLabel}</div>
-          </div>
-
-          {/* ── METRICS 2-COL ── */}
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "0.75rem",
-            marginBottom: "0.75rem",
-          }}>
-            {c.metrics.map((m, i) => (
-              <div key={i} style={{ background: "#1a1614", borderRadius: 10, padding: "1.1rem 1rem" }}>
-                <div style={{ fontFamily: fd, fontSize: "1.4rem", fontWeight: 800, color: "var(--white)", lineHeight: 1 }}>{m.val}</div>
-                <div style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.4)", fontWeight: 300, marginTop: 4, lineHeight: 1.35 }}>{m.key}</div>
+          <div
+            role="tabpanel"
+            id={`mb-panel-${active}`}
+            aria-labelledby={`mb-tab-${active}`}
+          >
+            {/* Client + subtitle */}
+            <div style={{ marginBottom: "1rem" }}>
+              <div
+                style={{
+                  fontFamily: fd,
+                  fontSize: "1.4rem",
+                  fontWeight: 900,
+                  textTransform: "uppercase",
+                  color: "var(--white)",
+                  lineHeight: 1,
+                }}
+              >
+                {c.client}
               </div>
-            ))}
-          </div>
-
-          {/* ── DETAIL ROWS ── */}
-          <div style={{ background: "#1a1614", borderRadius: 10 }}>
-            {c.rows.map((r, i) => (
-              <div key={i} style={{
-                padding: "0.9rem 1.1rem",
-                borderBottom: i < c.rows.length - 1 ? "0.5px solid rgba(255,255,255,0.06)" : "none",
-              }}>
-                <div style={{ fontSize: "0.62rem", color: "rgba(255,255,255,0.3)", fontWeight: 400, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.15rem" }}>{r.k}</div>
-                <div style={{ fontSize: "0.9rem", color: "var(--white)", fontWeight: 500, lineHeight: 1.4 }}>{r.v}</div>
+              <div
+                style={{
+                  fontSize: "0.68rem",
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: "rgba(255,255,255,0.35)",
+                  marginTop: "0.3rem",
+                  fontWeight: 300,
+                }}
+              >
+                {c.subtitle}
               </div>
-            ))}
-          </div>
+            </div>
 
-          {/* Mobile dots */}
-          <div style={{ display: "flex", justifyContent: "center", gap: "0.5rem", marginTop: "1.25rem" }}>
-            {cases.map((_, i) => (
-              <button key={i} onClick={() => setActive(i)} aria-label={`Go to case ${i + 1}`} style={{
-                width: active === i ? 24 : 8,
-                height: 8,
-                borderRadius: 100,
-                border: "none",
-                background: active === i ? "var(--red)" : "rgba(255,255,255,0.15)",
-                cursor: "pointer",
-                padding: 0,
-                transition: "width 0.3s ease, background 0.3s ease",
-              }} />
-            ))}
-          </div>
+            {/* Hero metric — largest element on mobile */}
+            <div
+              aria-label={c.heroAriaLabel}
+              style={{
+                background: "var(--red)",
+                borderRadius: 10,
+                padding: "1.5rem 1.25rem",
+                marginBottom: "0.75rem",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "0.6rem",
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  color: "rgba(255,255,255,0.7)",
+                  marginBottom: "0.5rem",
+                  fontWeight: 500,
+                }}
+              >
+                Results
+              </div>
+              <div
+                style={{
+                  fontFamily: fd,
+                  fontSize: "3rem",
+                  fontWeight: 900,
+                  color: "var(--white)",
+                  lineHeight: 1,
+                }}
+              >
+                {c.heroMetric}
+              </div>
+              <div
+                style={{
+                  fontSize: "0.88rem",
+                  color: "rgba(255,255,255,0.9)",
+                  fontWeight: 300,
+                  marginTop: "0.4rem",
+                  lineHeight: 1.5,
+                }}
+              >
+                {c.heroCaption}
+              </div>
+            </div>
 
+            {/* Proof tiles */}
+            <div style={{ marginBottom: "0.75rem" }}>
+              {renderProofTiles("mobile")}
+            </div>
+
+            {/* Before Astra */}
+            <div
+              style={{
+                background: "#1a1614",
+                borderRadius: 10,
+                padding: "1.25rem",
+                marginBottom: "0.75rem",
+                borderLeft: "3px solid rgba(241,42,41,0.4)",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "0.6rem",
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  color: "rgba(255,255,255,0.3)",
+                  marginBottom: "0.5rem",
+                  fontWeight: 500,
+                }}
+              >
+                Before Astra
+              </div>
+              <p
+                style={{
+                  fontSize: "0.9rem",
+                  fontWeight: 300,
+                  lineHeight: 1.7,
+                  color: "rgba(255,255,255,0.75)",
+                }}
+              >
+                {c.before}
+              </p>
+            </div>
+
+            {/* What changed */}
+            <div
+              style={{
+                background: "#1a1614",
+                borderRadius: 10,
+                padding: "1.25rem",
+                marginBottom: "0.75rem",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "0.6rem",
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  color: "rgba(255,255,255,0.3)",
+                  marginBottom: "0.5rem",
+                  fontWeight: 500,
+                }}
+              >
+                What changed
+              </div>
+              <p
+                style={{
+                  fontSize: "0.9rem",
+                  fontWeight: 300,
+                  lineHeight: 1.7,
+                  color: "rgba(255,255,255,0.75)",
+                }}
+              >
+                {c.operationalChange}
+              </p>
+            </div>
+
+            {/* Quote */}
+            <div
+              style={{
+                background: "#1a1614",
+                borderRadius: 10,
+                padding: "1.25rem",
+              }}
+            >
+              {renderQuote(48)}
+            </div>
+          </div>
         </div>
       </div>
     </section>

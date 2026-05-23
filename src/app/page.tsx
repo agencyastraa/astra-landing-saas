@@ -296,7 +296,7 @@ export default function Home() {
                 role: "CEO \u00b7 Xcore.fit \u00b7 Mexico",
               },
               {
-                quote: "Before Astra, we were spending $10K a month with no idea what was working. The clarity alone was worth it.",
+                quote: "Before Astra, we were spending a lot of money every month with no idea what was working. The clarity alone was worth it.",
                 photo: "/testimonial-idaca.png",
                 name: "Leyse Orlando",
                 role: "General Manager \u00b7 IDACA \u00b7 Venezuela",

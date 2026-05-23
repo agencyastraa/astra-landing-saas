@@ -96,6 +96,9 @@ body {
   opacity: 1;
 }
 
+/* ── CASE STUDIES: desktop/mobile toggle ── */
+.cases-mobile { display: none; }
+
 /* ══════════════════════════════════════════
    MOBILE  ≤ 768px
    Desktop no cambia — solo overrides aquí
@@ -176,6 +179,13 @@ body {
   .m-trust-divider {
     display: none !important;
   }
+
+  /* ── CASE STUDIES ── */
+  .cases-desktop { display: none !important; }
+  .cases-mobile { display: block !important; }
+  .m-cases { padding: 3rem 1.25rem !important; }
+  .m-cases .cases-header { flex-direction: column !important; align-items: flex-start !important; }
+  .m-cases .cases-sub { text-align: left !important; max-width: 100% !important; }
 
   /* ── LOGOS ── */
   .m-logos {
