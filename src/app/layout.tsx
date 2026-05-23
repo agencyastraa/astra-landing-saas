@@ -16,13 +16,17 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Astra Agency · AI-Powered Meta Ads for SaaS Companies",
+  title: "Astra Agency · Profit-First Meta Ads for SaaS and DTC",
   description:
-    "We help SaaS companies spending $10K+/mo on Meta Ads lower CAC, fix funnel leaks, and turn ad spend into predictable MRR. Get a free account audit.",
+    "Profit-first Meta Ads for SaaS and DTC brands spending $10K+/mo. Senior strategy plus AI execution. Free account audit, no pitch.",
   openGraph: {
-    title: "AI Meta Ads for SaaS. Lower CAC. Scale MRR.",
+    title: "Astra Agency · Profit-First Meta Ads for SaaS and DTC",
     description:
-      "Find the MRR your ad spend is leaking. Free Meta Ads audit for SaaS companies spending $5K+/mo.",
+      "Senior strategy. AI speed. Profit you can scale. Free Meta Ads audit for SaaS and DTC brands spending $10K+/mo.",
+  },
+  twitter: {
+    description:
+      "Senior strategy. AI speed. Profit you can scale. Free Meta Ads audit for SaaS and DTC brands spending $10K+/mo.",
   },
 };
 

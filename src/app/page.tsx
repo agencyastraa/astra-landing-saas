@@ -1,5 +1,3 @@
-import CaseStudies from "./components/CaseStudies";
-
 const fd = "var(--font-display), sans-serif";
 const fb = "var(--font-body), sans-serif";
 
@@ -61,7 +59,7 @@ export default function Home() {
           background: "var(--white)",
         }}>
           <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--red)", flexShrink: 0, display: "inline-block" }} />
-          Paid media agency for SaaS companies spending $10K+/mo on Meta Ads
+          Profit-first Meta Ads for SaaS and DTC brands spending $10K+/mo
         </div>
 
         <h1 style={{
@@ -74,10 +72,9 @@ export default function Home() {
           color: "var(--black)",
           marginBottom: "1.25rem",
         }}>
-          Your next{" "}
-          <em style={{ fontStyle: "normal", color: "var(--red)" }}>$100K</em>
-          {" "}in MRR<br />
-          is already in your ad account.
+          Lower CAC.<br />
+          Higher margin.<br />
+          <em style={{ color: "var(--red)" }}>Same ad budget.</em>
         </h1>
 
         <p className="m-hero-sub" style={{
@@ -85,17 +82,17 @@ export default function Home() {
           fontWeight: 300,
           lineHeight: 1.7,
           color: "var(--g600)",
-          maxWidth: 560,
+          maxWidth: 620,
           margin: "0 auto 2rem",
         }}>
-          You&apos;re spending $10K+ a month and your CAC keeps climbing while trial-to-paid stays flat. We find exactly where your budget is leaking, fix the funnel, and turn ad spend into MRR you can actually scale.
+          Profit-first Meta Ads for SaaS and DTC founders spending $10K+/mo. Your agency sends you a monthly PDF while your CAC quietly doubles. We fix that — senior strategists on your account, weekly creative cycles, and a live dashboard that replaces the Friday report.
         </p>
 
         <a href="https://calendly.com/admin-agencyastra/30min" target="_blank" rel="noopener noreferrer" className="btn-primary m-btn-full">
-          See exactly where your money is going
+          Get your 20-min Meta Ads teardown →
         </a>
         <p style={{ marginTop: "0.75rem", fontSize: "0.75rem", color: "var(--g400)" }}>
-          No commitment. No agency pitch. Just answers.
+          Free. No deck. No pitch. We show you 3 leaks in your account live on the call.
         </p>
       </section>
 
@@ -113,10 +110,10 @@ export default function Home() {
           gridTemplateColumns: "repeat(4, 1fr)",
         }}>
           {[
-            { num: "15+", lbl: "Companies Scaled" },
-            { num: "50%", lbl: "Average CAC Reduction" },
-            { num: "3.2x", lbl: "Average Revenue Growth" },
-            { num: "30 Days", lbl: "To First Results" },
+            { num: "15+", lbl: "Founders backed" },
+            { num: "$1M+", lbl: "Profit driven" },
+            { num: "3.2x", lbl: "Avg ROAS lift" },
+            { num: "4 yrs", lbl: "Running profitable Meta accounts" },
           ].map((s, i, arr) => (
             <div key={i} className="m-trust-stat" style={{
               padding: "1.25rem 1.5rem",
@@ -134,7 +131,6 @@ export default function Home() {
                 letterSpacing: "-0.02em",
               }}>
                 {s.num}
-                <span style={{ color: "var(--red)" }}>.</span>
               </div>
               <div style={{
                 fontSize: "0.68rem",
@@ -174,7 +170,7 @@ export default function Home() {
               marginBottom: "1.25rem",
               fontWeight: 500,
             }}>
-              Trusted by operators
+              Brands we run profit for
             </p>
             <div className="marquee-outer">
               <div className="marquee-track">
@@ -189,8 +185,96 @@ export default function Home() {
         );
       })()}
 
-      {/* ── 5. CASE STUDIES ── */}
-      <CaseStudies />
+      {/* ── 5. HOW WE WORK ── */}
+      <section className="m-section" style={{
+        padding: "4rem 4rem",
+        background: "var(--black)",
+        borderTop: "0.5px solid rgba(255,255,255,0.06)",
+      }}>
+        <div style={{ maxWidth: 960, margin: "0 auto" }}>
+          <p className="section-label" style={{ color: "rgba(255,255,255,0.4)" }}>How we work</p>
+          <h2 style={{
+            fontFamily: fd,
+            fontSize: "clamp(2rem, 4vw, 3rem)",
+            fontWeight: 800,
+            textTransform: "uppercase",
+            marginBottom: "1rem",
+            color: "var(--white)",
+            lineHeight: 1.1,
+          }}>
+            A senior owns your account. End to end.
+          </h2>
+          <p style={{
+            fontSize: "0.95rem",
+            fontWeight: 300,
+            lineHeight: 1.7,
+            color: "rgba(255,255,255,0.6)",
+            maxWidth: 680,
+            marginBottom: "2rem",
+          }}>
+            Most agencies sell you the same trade-off: a senior who closes the sale but never touches your account, or a &ldquo;growth platform&rdquo; that automates you into mediocrity. We do neither. The strategist who builds your plan runs your account. Period.
+          </p>
+
+          <div className="m-howwework-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.25rem" }}>
+            {[
+              {
+                n: "01",
+                title: "Senior owns your strategy",
+                desc: "The same person who builds your plan runs your account. No handoffs. No junior team learning the difference between an MQL and a paying customer on your budget.",
+              },
+              {
+                n: "02",
+                title: "We start where the proof is",
+                desc: "Before we spend a dollar, we map every winning ad in your category from the last 90 days, cluster the angles competitors are using, and audit their funnels. Your day-one creatives are backed by hundreds of ads that already proved what works.",
+              },
+              {
+                n: "03",
+                title: "You see what\u2019s working in real time",
+                desc: "Your CAC, trial-to-paid (SaaS) or AOV and repurchase (DTC), and pipeline velocity live on a dashboard. You stop waiting for Friday reports.",
+              },
+            ].map((card, i) => (
+              <div key={i} style={{
+                background: "#1a1614",
+                border: "0.5px solid rgba(255,255,255,0.08)",
+                borderRadius: 8,
+                padding: "1.5rem 1.25rem",
+              }}>
+                <div style={{ fontFamily: fd, fontSize: "0.75rem", fontWeight: 800, letterSpacing: "0.1em", color: "var(--red)", marginBottom: "0.65rem" }}>{card.n}</div>
+                <div style={{
+                  fontFamily: fd,
+                  fontWeight: 800,
+                  fontSize: "1.05rem",
+                  textTransform: "uppercase",
+                  marginBottom: "0.5rem",
+                  letterSpacing: "0.02em",
+                  color: "var(--white)",
+                }}>
+                  {card.title}
+                </div>
+                <p style={{ fontSize: "0.84rem", fontWeight: 300, color: "rgba(255,255,255,0.6)", lineHeight: 1.6 }}>
+                  {card.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p className="m-punchline" style={{
+            fontFamily: fd,
+            fontSize: "1.3rem",
+            fontWeight: 800,
+            textTransform: "uppercase",
+            color: "var(--white)",
+            textAlign: "center",
+            marginTop: "2.5rem",
+            lineHeight: 1.3,
+          }}>
+            Senior alone is slow. AI alone is shallow.<br />
+            Paired, they{" "}
+            <span style={{ color: "var(--red)" }}>out-profit</span>
+            {" "}either.
+          </p>
+        </div>
+      </section>
 
       {/* ── 6. PROBLEM ── */}
       <section className="m-section" style={{
@@ -213,7 +297,7 @@ export default function Home() {
           </h2>
 
           <p style={{ fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.7, color: "var(--g600)", marginBottom: "0.75rem" }}>
-            A senior closed the sale. A junior ran your account. Three months later you were staring at a report full of clicks and signups that never converted to paid, wondering where your budget went.
+            A senior closed the sale. A junior ran your account. Three months later you were staring at a report full of clicks and signups that never converted, wondering where your budget went.
           </p>
           <p style={{ fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.7, color: "var(--g600)", marginBottom: "0.75rem" }}>
             You couldn&apos;t get anyone on the phone. Your ad account was in their name. And when you finally walked away, you lost everything. The data, the history, the attribution work. Back to zero.
@@ -245,7 +329,7 @@ export default function Home() {
             background: "var(--white)",
           }}>
             {[
-              { n: "01", title: "Wrong priorities", desc: "Your budget was going to what looked busy on the dashboard, not to what was actually driving trial-to-paid conversion and MRR." },
+              { n: "01", title: "Wrong priorities", desc: "Your budget was going to what looked busy on the dashboard, not to what was actually driving paying customers." },
               { n: "02", title: "A weak funnel", desc: "No amount of ad spend fixes a funnel that drops users between signup and activation. You need the right message, the right landing page, and the right onboarding before you need more traffic." },
               { n: "03", title: "Zero visibility", desc: "You had no clear picture of which campaigns were generating paying customers versus burning budget on signups that churned. Every decision was a guess." },
             ].map((item, i, arr) => (
@@ -278,7 +362,7 @@ export default function Home() {
         borderTop: "0.5px solid rgba(255,255,255,0.06)",
       }}>
         <div style={{ maxWidth: 960, margin: "0 auto" }}>
-          <p className="section-label" style={{ color: "rgba(255,255,255,0.4)" }}>What clients say</p>
+          <p className="section-label" style={{ color: "rgba(255,255,255,0.4)" }}>What founders say</p>
           <h2 style={{
             fontFamily: fd,
             fontSize: "clamp(2rem, 4vw, 3rem)",
@@ -287,27 +371,27 @@ export default function Home() {
             marginBottom: "1.5rem",
             color: "var(--white)",
           }}>
-            Testimonials
+            What founders say
           </h2>
           <div className="m-testi-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }}>
             {[
               {
                 quote: "We were completely dependent on referrals. Now we have 8 to 12 new gyms signing every month across 12 countries, on autopilot.",
                 photo: "/testimonial-xcore.png",
-                name: "José Quintero",
-                role: "CEO · Xcore.fit · Mexico",
+                name: "Jos\u00e9 Quintero",
+                role: "CEO \u00b7 Xcore.fit \u00b7 Mexico",
               },
               {
-                quote: "Before Astra, we were spending $10K a month with no idea what was working. Within 60 days we crossed $1M in monthly revenue. The clarity alone was worth it.",
+                quote: "Before Astra, we were spending $10K a month with no idea what was working. The clarity alone was worth it.",
                 photo: "/testimonial-idaca.png",
                 name: "Leyse Orlando",
-                role: "General Manager · IDACA · Venezuela",
+                role: "General Manager \u00b7 IDACA \u00b7 Venezuela",
               },
               {
                 quote: "We went from 35 orders a day to over 100 in 75 days. We had to pause because we ran out of inventory, a problem I\u0027d never had before.",
                 photo: "/testimonial-onetool.png",
                 name: "Oswaldo Arias",
-                role: "CEO · OneTool · Colombia",
+                role: "CEO \u00b7 OneTool \u00b7 Colombia",
               },
             ].map((t, i) => (
               <div key={i} style={{
@@ -320,7 +404,7 @@ export default function Home() {
                 gap: "0.75rem",
               }}>
                 <div style={{ fontFamily: fd, fontSize: "2rem", fontWeight: 900, color: "var(--red)", lineHeight: 0.8, marginBottom: "0.25rem" }}>&ldquo;</div>
-                <p style={{ fontSize: "0.84rem", fontWeight: 300, lineHeight: 1.65, color: "rgba(255,255,255,0.65)", fontStyle: "italic", flex: 1 }}>
+                <p style={{ fontSize: "0.84rem", fontWeight: 300, lineHeight: 1.65, color: "rgba(255,255,255,0.65)", fontStyle: "normal", flex: 1 }}>
                   {t.quote}
                 </p>
                 <div style={{ height: "0.5px", background: "rgba(255,255,255,0.08)" }} />
@@ -374,13 +458,13 @@ export default function Home() {
                 <div style={{ fontSize: "0.65rem", letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 600, color: "var(--g400)" }}>Other agencies</div>
               </div>
               {[
-                "A junior you never met runs your account",
-                "Monthly PDF full of clicks, impressions, and vanity metrics",
-                "They own your ad account and you leave with nothing",
-                "3 months of \"testing\" before anything moves",
-                "Generic playbook from their last ecommerce client",
-                "You're one of 40+ clients in a queue",
-                "Built for ecommerce playbooks, not SaaS funnels",
+                "Optimizes for ROAS while CAC quietly climbs",
+                "Senior closes the sale, junior runs the account",
+                "A monthly PDF full of impressions and CPCs",
+                "Three months of \"testing\" before anything moves",
+                "Their ad account, their pixel, their attribution",
+                "Ecommerce playbooks run on SaaS funnels (or vice versa)",
+                "You\u2019re one of 40+ accounts in a queue",
               ].map((item, i, arr) => (
                 <div key={i} style={{
                   padding: "0.85rem 1.5rem",
@@ -415,13 +499,13 @@ export default function Home() {
                 <div style={{ fontSize: "0.65rem", letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 600, color: "var(--red)" }}>Astra Agency</div>
               </div>
               {[
+                "Optimizes for CAC payback and contribution margin",
                 "The strategist who built your plan runs your account",
-                "Real-time visibility into CAC, trial-to-paid, and pipeline velocity on a live dashboard",
-                "Your account, your name, your data, always",
-                "First results within 30 days",
-                "Strategy built around your funnel, your CAC payback, and your LTV",
-                "Small roster. We know your numbers better than you do",
-                "AI-powered research, senior-led strategy, faster insights",
+                "Live dashboard: CAC, conversion velocity, channel-level profit",
+                "First winning creative live in under 14 days",
+                "Your account, your pixel, your data — always",
+                "SaaS-native or DTC-native playbook, never one forced on the other",
+                "Max 10 accounts at a time, by design",
               ].map((item, i, arr) => (
                 <div key={i} style={{
                   padding: "0.85rem 1.5rem",
@@ -457,8 +541,8 @@ export default function Home() {
             marginBottom: "2rem",
             color: "var(--black)",
           }}>
-            From signed contract to first winning ad in{" "}
-            <span style={{ color: "var(--red)" }}>14 days</span> or less.
+            Day 1 to first winning ad:{" "}
+            <span style={{ color: "var(--red)" }}>14 days.</span>
           </h2>
 
           <div className="m-timeline-grid" style={{
@@ -479,9 +563,9 @@ export default function Home() {
             }} />
 
             {[
-              { label: "Day 1–3", desc: "Onboarding call, full account audit, competitor and funnel teardown." },
-              { label: "Day 4–7", desc: "Attribution rebuilt, creative library produced, test campaigns live." },
-              { label: "Day 8–14", desc: "First winning creative identified and ready to scale." },
+              { label: "Day 1\u20133", desc: "Onboarding call. Full account audit. Competitor and funnel teardown \u2014 done by the strategist who\u2019ll run your account, not handed off." },
+              { label: "Day 4\u20137", desc: "Attribution rebuilt, creative library produced, test campaigns live." },
+              { label: "Day 8\u201314", desc: "First winning creative identified and ready to scale." },
             ].map((step, i) => (
               <div key={i} style={{
                 border: "0.5px solid var(--g200)",
@@ -529,8 +613,8 @@ export default function Home() {
             marginBottom: "1rem",
             color: "var(--black)",
           }}>
-            We don&apos;t start from zero.{" "}
-            <span style={{ color: "var(--red)" }}>We start from what&apos;s already working.</span>
+            We start from what&apos;s already converting{" "}
+            <span style={{ color: "var(--red)" }}>in your category.</span>
           </h2>
 
           <p style={{
@@ -541,22 +625,22 @@ export default function Home() {
             maxWidth: 680,
             marginBottom: "2rem",
           }}>
-            Before we spend a single dollar of your budget, our AI agents reverse-engineer the ads, angles, and funnels already winning in your category.
+            Before we touch your budget, we map every winning ad in your category from the last 90 days — competitor angles, funnel patterns, creative formats — and use it as the floor, not the ceiling, of what we test.
           </p>
 
           <div className="m-edge-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.25rem" }}>
             {[
               {
-                title: "Winning ads, mapped.",
+                title: "Winning ads mapped",
                 desc: "Every top-performing ad in your category from the last 90 days. We know what\u2019s converting before we write a single line of copy.",
               },
               {
-                title: "Angles, decoded.",
-                desc: "AI clusters the positioning patterns your competitors are using and surfaces the angles your funnel is missing.",
+                title: "Angles decoded",
+                desc: "We cluster the positioning patterns your competitors are using and surface the angles your funnel is missing.",
               },
               {
-                title: "Funnels, audited.",
-                desc: "We map your top competitors\u2019 trial flows, demo bookings, and pricing pages, and find their leaks before we build yours.",
+                title: "Funnels audited",
+                desc: "We map your top competitors\u2019 trial flows, demo bookings, pricing pages (SaaS) or PDPs, checkout, and post-purchase (DTC) \u2014 and find their leaks before we build yours.",
               },
             ].map((card, i) => (
               <div key={i} style={{
@@ -614,7 +698,7 @@ export default function Home() {
       }}>
         <div style={{ maxWidth: 640, margin: "0 auto" }}>
           <p style={{ fontSize: "0.68rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)", marginBottom: "1.25rem", fontWeight: 500 }}>
-            Free account audit
+            Free account teardown
           </p>
           <h2 style={{
             fontFamily: fd,
@@ -625,25 +709,21 @@ export default function Home() {
             lineHeight: 1.05,
             marginBottom: "1.25rem",
           }}>
-            Find the MRR you&apos;re{" "}
-            <em style={{ fontStyle: "normal", textDecoration: "underline", textDecorationColor: "rgba(255,255,255,0.4)" }}>
-              already leaving
-            </em>{" "}
-            on the table.
+            Get your 20-min Meta Ads teardown.
           </h2>
           <p style={{ fontSize: "0.95rem", fontWeight: 300, color: "rgba(255,255,255,0.75)", lineHeight: 1.75, marginBottom: "2.5rem" }}>
-            We&apos;ll look at your real account, show you exactly where the leaks are, and give you a clear picture of what predictable, scalable customer acquisition looks like from here. No pitch. No pressure.
+            Send us your account. A senior reviews it. We get on a 20-minute call and show you the 3 biggest leaks live — what&apos;s costing you money, what&apos;s hidden, and what would move the needle if fixed this month. If we&apos;re not a fit, you walk with a teardown worth keeping.
           </p>
           <a href="https://calendly.com/admin-agencyastra/30min" target="_blank" rel="noopener noreferrer" className="btn-white m-btn-full">
-            See exactly where your money is going →
+            Book the teardown →
           </a>
           <p style={{ marginTop: "1.25rem", fontSize: "0.72rem", color: "rgba(255,255,255,0.45)" }}>
-            Available for SaaS companies spending $5K+/mo on Meta Ads.
+            For SaaS and DTC brands spending $10K+/mo on Meta Ads.
           </p>
         </div>
       </section>
 
-      {/* ── 10. FOOTER ── */}
+      {/* ── 12. FOOTER ── */}
       <footer className="m-footer" style={{
         padding: "1.75rem 4rem",
         display: "flex",
