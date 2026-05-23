@@ -1,3 +1,5 @@
+import CaseStudies from "./components/CaseStudies";
+
 const fd = "var(--font-display), sans-serif";
 const fb = "var(--font-body), sans-serif";
 
@@ -185,96 +187,8 @@ export default function Home() {
         );
       })()}
 
-      {/* ── 5. HOW WE WORK ── */}
-      <section className="m-section" style={{
-        padding: "4rem 4rem",
-        background: "var(--black)",
-        borderTop: "0.5px solid rgba(255,255,255,0.06)",
-      }}>
-        <div style={{ maxWidth: 960, margin: "0 auto" }}>
-          <p className="section-label" style={{ color: "rgba(255,255,255,0.4)" }}>How we work</p>
-          <h2 style={{
-            fontFamily: fd,
-            fontSize: "clamp(2rem, 4vw, 3rem)",
-            fontWeight: 800,
-            textTransform: "uppercase",
-            marginBottom: "1rem",
-            color: "var(--white)",
-            lineHeight: 1.1,
-          }}>
-            A senior owns your account. End to end.
-          </h2>
-          <p style={{
-            fontSize: "0.95rem",
-            fontWeight: 300,
-            lineHeight: 1.7,
-            color: "rgba(255,255,255,0.6)",
-            maxWidth: 680,
-            marginBottom: "2rem",
-          }}>
-            Most agencies sell you the same trade-off: a senior who closes the sale but never touches your account, or a &ldquo;growth platform&rdquo; that automates you into mediocrity. We do neither. The strategist who builds your plan runs your account. Period.
-          </p>
-
-          <div className="m-howwework-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.25rem" }}>
-            {[
-              {
-                n: "01",
-                title: "Senior owns your strategy",
-                desc: "The same person who builds your plan runs your account. No handoffs. No junior team learning the difference between an MQL and a paying customer on your budget.",
-              },
-              {
-                n: "02",
-                title: "We start where the proof is",
-                desc: "Before we spend a dollar, we map every winning ad in your category from the last 90 days, cluster the angles competitors are using, and audit their funnels. Your day-one creatives are backed by hundreds of ads that already proved what works.",
-              },
-              {
-                n: "03",
-                title: "You see what\u2019s working in real time",
-                desc: "Your CAC, trial-to-paid (SaaS) or AOV and repurchase (DTC), and pipeline velocity live on a dashboard. You stop waiting for Friday reports.",
-              },
-            ].map((card, i) => (
-              <div key={i} style={{
-                background: "#1a1614",
-                border: "0.5px solid rgba(255,255,255,0.08)",
-                borderRadius: 8,
-                padding: "1.5rem 1.25rem",
-              }}>
-                <div style={{ fontFamily: fd, fontSize: "0.75rem", fontWeight: 800, letterSpacing: "0.1em", color: "var(--red)", marginBottom: "0.65rem" }}>{card.n}</div>
-                <div style={{
-                  fontFamily: fd,
-                  fontWeight: 800,
-                  fontSize: "1.05rem",
-                  textTransform: "uppercase",
-                  marginBottom: "0.5rem",
-                  letterSpacing: "0.02em",
-                  color: "var(--white)",
-                }}>
-                  {card.title}
-                </div>
-                <p style={{ fontSize: "0.84rem", fontWeight: 300, color: "rgba(255,255,255,0.6)", lineHeight: 1.6 }}>
-                  {card.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <p className="m-punchline" style={{
-            fontFamily: fd,
-            fontSize: "1.3rem",
-            fontWeight: 800,
-            textTransform: "uppercase",
-            color: "var(--white)",
-            textAlign: "center",
-            marginTop: "2.5rem",
-            lineHeight: 1.3,
-          }}>
-            Senior alone is slow. AI alone is shallow.<br />
-            Paired, they{" "}
-            <span style={{ color: "var(--red)" }}>out-profit</span>
-            {" "}either.
-          </p>
-        </div>
-      </section>
+      {/* ── 5. CASE STUDIES ── */}
+      <CaseStudies />
 
       {/* ── 6. PROBLEM ── */}
       <section className="m-section" style={{
