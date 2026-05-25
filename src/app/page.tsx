@@ -22,7 +22,7 @@ export default function Home() {
         <div>
           <img src="/logo-astra.png" alt="Astra Agency" style={{ height: 52, mixBlendMode: "multiply" }} />
         </div>
-        <a href="https://calendly.com/admin-agencyastra/30min" target="_blank" rel="noopener noreferrer" className="m-nav-cta" style={{
+        <a href="https://calendly.com/admin-agencyastra/30-min-profit-strategy-call" target="_blank" rel="noopener noreferrer" className="m-nav-cta" style={{
           fontFamily: fb,
           fontSize: "0.85rem",
           fontWeight: 500,
@@ -90,7 +90,7 @@ export default function Home() {
           Profit-first Meta Ads for SaaS and DTC founders spending $10K+/mo. Your agency sends you a monthly PDF while your CAC quietly doubles. We fix that — senior strategists on your account, weekly creative cycles, and a live dashboard that replaces the Friday report.
         </p>
 
-        <a href="https://calendly.com/admin-agencyastra/30min" target="_blank" rel="noopener noreferrer" className="btn-primary m-btn-full">
+        <a href="https://calendly.com/admin-agencyastra/30-min-profit-strategy-call" target="_blank" rel="noopener noreferrer" className="btn-primary m-btn-full">
           Get your 20-min Meta Ads teardown →
         </a>
         <p style={{ marginTop: "0.75rem", fontSize: "0.75rem", color: "var(--g400)" }}>
@@ -628,7 +628,7 @@ export default function Home() {
           <p style={{ fontSize: "0.95rem", fontWeight: 300, color: "rgba(255,255,255,0.75)", lineHeight: 1.75, marginBottom: "2.5rem" }}>
             Send us your account. A senior reviews it. We get on a 20-minute call and show you the 3 biggest leaks live — what&apos;s costing you money, what&apos;s hidden, and what would move the needle if fixed this month. If we&apos;re not a fit, you walk with a teardown worth keeping.
           </p>
-          <a href="https://calendly.com/admin-agencyastra/30min" target="_blank" rel="noopener noreferrer" className="btn-white m-btn-full">
+          <a href="https://calendly.com/admin-agencyastra/30-min-profit-strategy-call" target="_blank" rel="noopener noreferrer" className="btn-white m-btn-full">
             Book the teardown →
           </a>
           <p style={{ marginTop: "1.25rem", fontSize: "0.72rem", color: "rgba(255,255,255,0.45)" }}>
